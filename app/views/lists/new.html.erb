@@ -1,0 +1,25 @@
+<h1>Nouvelle liste</h1>
+
+<%= form_with model: @list, local: true do |form| %>
+  <% if @list.errors.any? %>
+    <div class="errors">
+      <h2><%= pluralize(@list.errors.count, "error") %> prevents saving :</h2>
+      <ul>
+        <% @list.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, "List name" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.submit "Create list" %>
+  </div>
+<% end %>
+
+<%= link_to "back", lists_path %>
